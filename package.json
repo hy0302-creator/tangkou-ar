@@ -1,0 +1,39 @@
+{
+  "name": "tangkou-ar",
+  "version": "1.0.0",
+  "description": "阳西塘口镇 AR 文化平台 - 三下乡项目",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "seed": "node server/utils/seed.js",
+    "public": "node start-public.js"
+  },
+  "keywords": [
+    "AR",
+    "mindAR",
+    "three.js",
+    "乡村振兴",
+    "塘口镇"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "localtunnel": "^2.0.2",
+    "multer": "^2.2.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.3",
+    "sql.js": "^1.14.1",
+    "uuid": "^14.0.1"
+  },
+  "devDependencies": {
+    "@gltf-transform/cli": "^4.4.1"
+  }
+}

@@ -1,0 +1,22 @@
+# Render.com 部署配置
+services:
+  - type: web
+    name: tangkou-ar
+    env: node
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: tangkou2024
+      - key: BASE_URL
+        sync: false  # 部署后手动设置为 Render 提供的 URL
+    disk:
+      name: data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

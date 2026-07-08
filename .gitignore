@@ -1,0 +1,13 @@
+node_modules/
+data/database.sqlite
+data/uploads/targets/*
+data/uploads/models/*
+data/uploads/audio/*
+data/uploads/qrcodes/*
+!data/uploads/targets/.gitkeep
+!data/uploads/models/.gitkeep
+!data/uploads/audio/.gitkeep
+!data/uploads/qrcodes/.gitkeep
+.env
+.DS_Store
+*.log

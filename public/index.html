@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>塘口镇 AR 文化平台 - 阳西·三下乡</title>
+  <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🌾 阳西 · 塘口镇</div>
+      <h1>塘口镇 AR 文化平台</h1>
+      <p class="hero-subtitle">扫一扫，发现塘口之美<br>用增强现实技术，打开乡村文化新视界</p>
+      <div class="hero-stats" id="heroStats">
+        <div class="stat-item">
+          <span class="stat-num" id="statContents">-</span>
+          <span class="stat-label">AR 体验</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statCategories">-</span>
+          <span class="stat-label">文化分类</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statViews">-</span>
+          <span class="stat-label">已体验</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- How it works -->
+  <section class="guide">
+    <h2>📱 如何使用</h2>
+    <div class="guide-steps">
+      <div class="step">
+        <div class="step-icon">1️⃣</div>
+        <h3>选择内容</h3>
+        <p>浏览下方分类，找到感兴趣的 AR 体验</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">2️⃣</div>
+        <h3>扫码进入</h3>
+        <p>扫描二维码或点击按钮打开 AR 页面</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">3️⃣</div>
+        <h3>对准标记</h3>
+        <p>将手机摄像头对准 AR 标记图片</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">4️⃣</div>
+        <h3>发现惊喜</h3>
+        <p>3D模型叠加现实，了解塘口文化</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Tabs -->
+  <section class="categories" id="categoriesSection">
+    <h2>🎯 探索塘口</h2>
+    <div class="category-tabs" id="categoryTabs">
+      <button class="cat-tab active" data-slug="">全部</button>
+      <!-- JS populated -->
+    </div>
+  </section>
+
+  <!-- Content Cards -->
+  <section class="content-grid" id="contentGrid">
+    <!-- JS populated -->
+  </section>
+
+  <!-- Loading & Empty states -->
+  <div class="loading" id="loading">加载中...</div>
+  <div class="empty" id="empty" style="display:none">
+    <div class="empty-icon">📭</div>
+    <p>该分类暂无 AR 内容</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>🌾 阳西塘口镇 · 三下乡实践项目</p>
+    <p class="footer-sub">用科技赋能乡村振兴，让世界看见塘口之美</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/content-loader.js?v=3"></script>
+  <script src="js/ui.js?v=3"></script>
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>

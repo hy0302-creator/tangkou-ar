@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>AR 体验 - 塘口镇</title>
+  <link rel="stylesheet" href="css/ar.css?v=2">
+
+  <!-- Three.js Import Map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- mindAR -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
+</head>
+<body>
+  <!-- Loading overlay -->
+  <div class="ar-loading" id="arLoading">
+    <div class="ar-loading-spinner"></div>
+    <p id="arLoadingText">正在加载 AR 体验...</p>
+    <div class="ar-loading-bar" id="arLoadingBar" style="display:none;">
+      <div class="ar-loading-bar-fill" id="arLoadingBarFill"></div>
+    </div>
+  </div>
+
+  <!-- AR Scene (rendered by mindAR + Three.js) -->
+  <div class="ar-container" id="arContainer" style="display:none;">
+    <!-- Video background (camera feed) will be appended by mindAR -->
+
+    <!-- Top bar -->
+    <div class="ar-topbar">
+      <button class="ar-back-btn" onclick="goBack()" title="返回">← 返回</button>
+      <span class="ar-title" id="arTitle">AR 体验</span>
+      <button class="ar-flash-btn" id="flashBtn" onclick="toggleFlash()" title="闪光灯">🔦</button>
+    </div>
+
+    <!-- Scanning hint -->
+    <div class="ar-scan-hint" id="arScanHint">
+      <div class="scan-frame"></div>
+      <img class="scan-marker-preview" id="scanMarkerPreview" src="" alt="标记图片" style="display:none;">
+      <p>请将摄像头对准 AR 标记图片</p>
+    </div>
+
+    <!-- Info panel (appears when target found) -->
+    <div class="ar-info-panel collapsed" id="arInfoPanel" style="display:none;">
+      <div class="ar-info-header" onclick="toggleInfoPanel()">
+        <div class="ar-info-header-left">
+          <h3 id="arInfoTitle">-</h3>
+          <span class="ar-info-category" id="arInfoCategory">-</span>
+        </div>
+        <button class="ar-info-toggle" id="arInfoToggle" title="展开/收起">▲</button>
+      </div>
+      <div class="ar-info-collapsible" id="arInfoCollapsible">
+        <div class="ar-info-body" id="arInfoBody">
+          <!-- Rich HTML content -->
+        </div>
+        <div class="ar-info-actions">
+          <button class="ar-audio-btn" id="arAudioBtn" onclick="toggleAudio()" style="display:none;">
+            🔊 播放语音导览
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Target lost hint -->
+    <div class="ar-lost-hint" id="arLostHint" style="display:none;">
+      <p>⚠️ 标记丢失，请重新对准</p>
+    </div>
+  </div>
+
+  <!-- Error state -->
+  <div class="ar-error" id="arError" style="display:none;">
+    <div class="ar-error-icon">😞</div>
+    <h2 id="arErrorTitle">无法启动 AR</h2>
+    <p id="arErrorMessage">请检查权限或刷新页面重试</p>
+    <button class="btn-retry" onclick="location.reload()">🔄 重试</button>
+    <button class="btn-retry" onclick="goBack()">🏠 返回首页</button>
+  </div>
+
+  <!-- Audio element -->
+  <audio id="arAudio" preload="auto" style="display:none;"></audio>
+
+  <!-- Scripts -->
+  <script src="js/content-loader.js?v=2"></script>
+  <script type="module" src="js/ar-controller.js?v=2"></script>
+</body>
+</html>
