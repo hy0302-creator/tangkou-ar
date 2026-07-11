@@ -89,13 +89,11 @@ app.use(express.static(config.PUBLIC_DIR, {
   },
 }));
 
-// Admin SPA fallback — MUST be before the /admin static mount
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(config.ADMIN_DIR, 'index.html'));
-});
+// Admin SPA — express.static handles /admin→/admin/ redirect automatically
 app.use('/admin', express.static(config.ADMIN_DIR, {
   maxAge: '1h',
   dotfiles: 'deny',
+  index: 'index.html',
 }));
 
 // ======================== 业务API ========================
