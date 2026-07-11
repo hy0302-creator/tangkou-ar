@@ -1,0 +1,470 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--[if gte mso 9]><xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml><![endif]-->
+<style>
+@page {
+  size: A4;
+  margin: 2.54cm 3.18cm 2.54cm 3.18cm;
+  mso-header-margin: 1.5cm;
+  mso-footer-margin: 1.25cm;
+}
+body {
+  font-family: "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #333;
+}
+h1 { font-size: 22px; color: #1B4332; }
+h2 { font-size: 18px; color: #1B4332; border-bottom: 2px solid #D4A373; padding-bottom: 6px; }
+h3 { font-size: 15px; color: #333; }
+h4 { font-size: 14px; color: #2D6A4F; }
+code { font-family: "Courier New", monospace; font-size: 13px; background: #f0f0f0; padding: 2px 6px; }
+pre { background: #f5f5f5; padding: 12px; font-size: 13px; line-height: 1.5; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th { background: #2D6A4F; color: white; padding: 8px 12px; text-align: left; }
+td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+a { color: #2D6A4F; }
+blockquote { border-left: 3px solid #D4A373; margin: 12px 0; padding: 8px 16px; background: #f9f6f0; color: #666; }
+hr { border: none; border-top: 1px solid #ddd; margin: 24px 0; }
+</style>
+</head>
+<body>
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">🌾 塘口镇 AR 文化平台 — 交接指南</h1>
+
+<p style="margin:8px 0;line-height:1.8;">&gt; 本文档帮助接手的负责人快速上手项目，包括本地运行、内容管理、云端部署和维护。</p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">📋 目录</h2>
+
+<li style="margin:4px 0;"><a href="#1-项目概述" style="color:#2D6A4F;">项目概述</a></li>
+<li style="margin:4px 0;"><a href="#2-准备工作" style="color:#2D6A4F;">准备工作</a></li>
+<li style="margin:4px 0;"><a href="#3-本地运行" style="color:#2D6A4F;">本地运行</a></li>
+<li style="margin:4px 0;"><a href="#4-管理后台操作" style="color:#2D6A4F;">管理后台操作</a></li>
+<li style="margin:4px 0;"><a href="#5-制作-ar-内容" style="color:#2D6A4F;">制作 AR 内容</a></li>
+<li style="margin:4px 0;"><a href="#6-部署到云服务器" style="color:#2D6A4F;">部署到云服务器</a></li>
+<li style="margin:4px 0;"><a href="#7-日常维护" style="color:#2D6A4F;">日常维护</a></li>
+<li style="margin:4px 0;"><a href="#8-常见问题" style="color:#2D6A4F;">常见问题</a></li>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">1. 项目概述</h2>
+
+<p style="margin:8px 0;line-height:1.8;">这是一个<strong>基于网页的 AR 文化展示平台</strong>，用户用手机扫描二维码或打开网址，将摄像头对准标记图片，就能看到 3D 模型叠加在现实世界中。</p>
+
+<h3 style="margin:20px 0 10px;color:#333;">核心功能</h3>
+
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr style="background:#2D6A4F;color:white;"><th style="padding:8px 12px;text-align:left;">功能</th><th style="padding:8px 12px;text-align:left;">说明</th></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">📱 AR 扫描</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">手机摄像头对准标记图，浮现 3D 模型</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">🖥️ 管理后台</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">新增/编辑/删除 AR 内容，上传模型和标记图</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">📷 二维码</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">每个 AR 内容自动生成二维码，可打印张贴</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">🎨 四大分类</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">农特产品、文化景点、非遗手艺、乡村风貌</td></tr></table>
+<h3 style="margin:20px 0 10px;color:#333;">技术架构</h3>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>浏览器（手机/电脑）
+    ↓
+<p style="margin:8px 0;line-height:1.8;">Node.js 服务器（Express）</p>
+    ↓
+<p style="margin:8px 0;line-height:1.8;">SQLite 数据库（单文件，无需额外安装数据库软件）</code></pre></p>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;"><strong>AR 引擎</strong>: mindAR（图像识别追踪）</li>
+<li style="margin:4px 0;"><strong>3D 渲染</strong>: Three.js</li>
+<li style="margin:4px 0;"><strong>后端</strong>: Node.js + Express</li>
+<li style="margin:4px 0;"><strong>数据库</strong>: SQLite（文件型数据库，自动创建）</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">2. 准备工作</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">2.1 需要的环境</h3>
+
+<p style="margin:8px 0;line-height:1.8;">在电脑上安装以下软件：</p>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>① Node.js（必需）</strong></p>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">下载地址：https://nodejs.org</li>
+<li style="margin:4px 0;">选择 <strong>LTS 版本</strong>（长期支持版），如 Node.js 22.x</li>
+<li style="margin:4px 0;">安装时一路点"下一步"即可</li>
+<li style="margin:4px 0;">安装完成后，打开"命令提示符"或"PowerShell"，输入以下命令验证：</li>
+<p style="margin:8px 0;line-height:1.8;"></ul>  <pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>node -v   # 应显示版本号，如 v22.x.x</p>
+  npm -v    # 应显示版本号，如 10.x.x</code></pre>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>② Git（推荐，方便获取更新）</strong></p>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">下载地址：https://git-scm.com/downloads</li>
+<li style="margin:4px 0;">默认安装即可</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">2.2 获取项目代码</h3>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>方式一：直接复制文件夹（最简单）</strong></p>
+
+<p style="margin:8px 0;line-height:1.8;">将整个 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">tangkou-ar</code> 文件夹复制到新电脑上。</p>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>方式二：从 GitHub 克隆（推荐）</strong></p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>git clone &lt;仓库地址&gt;
+<p style="margin:8px 0;line-height:1.8;">cd tangkou-ar</code></pre></p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">3. 本地运行</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">3.1 首次启动</h3>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 1. 进入项目目录
+<p style="margin:8px 0;line-height:1.8;">cd tangkou-ar</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">2. 安装依赖（仅首次需要，约1-2分钟）</h1>
+<p style="margin:8px 0;line-height:1.8;">npm install</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">3. 初始化数据库和示例数据</h1>
+<p style="margin:8px 0;line-height:1.8;">npm run seed</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">4. 启动服务</h1>
+<p style="margin:8px 0;line-height:1.8;">npm start</code></pre></p>
+
+<p style="margin:8px 0;line-height:1.8;">启动成功后会显示：</p>
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>╔══════════════════════════════════════════╗
+<p style="margin:8px 0;line-height:1.8;">║  🌾 塘口镇 AR 文化平台 v1.0              ║</p>
+<p style="margin:8px 0;line-height:1.8;">║  🏠 首页:    http://localhost:3000        ║</p>
+<p style="margin:8px 0;line-height:1.8;">║  ⚙️  后台:    http://localhost:3000/admin  ║</p>
+<p style="margin:8px 0;line-height:1.8;">╚══════════════════════════════════════════╝</code></pre></p>
+
+<h3 style="margin:20px 0 10px;color:#333;">3.2 访问地址</h3>
+
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr style="background:#2D6A4F;color:white;"><th style="padding:8px 12px;text-align:left;">地址</th><th style="padding:8px 12px;text-align:left;">用途</th></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">http://localhost:3000</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">用户端首页</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">http://localhost:3000/admin</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">管理后台</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">http://localhost:3000/ar-viewer.html?content=xxx</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">AR 扫描页</td></tr></table>
+<h3 style="margin:20px 0 10px;color:#333;">3.3 临时分享给他人</h3>
+
+<p style="margin:8px 0;line-height:1.8;">如果想让别人临时体验（不需要部署服务器）：</p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>npm run public</code></pre>
+
+<p style="margin:8px 0;line-height:1.8;">会生成一个公网地址（如 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">https://xxx.loco.live</code>），把链接发出去即可。</p>
+
+<p style="margin:8px 0;line-height:1.8;">&gt; ⚠️ 关掉命令窗口后公网地址就失效了，仅适合临时演示。</p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">4. 管理后台操作</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">4.1 登录</h3>
+
+<li style="margin:4px 0;">打开 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">http://localhost:3000/admin</code></li>
+<li style="margin:4px 0;">输入管理员账号密码（默认：<code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">admin</code> / <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">tangkou2024</code>）</li>
+<li style="margin:4px 0;">⚠️ <strong>上线前务必修改默认密码！</strong>（见 <a href="#71-修改管理员密码" style="color:#2D6A4F;">7.1 修改管理员密码</a>）</li>
+
+<h3 style="margin:20px 0 10px;color:#333;">4.2 管理分类</h3>
+
+<p style="margin:8px 0;line-height:1.8;">进入"分类管理"页面，可以：</p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">查看现有四个分类（农特产品、文化景点、非遗手艺、乡村风貌）</li>
+<li style="margin:4px 0;">新增分类</li>
+<li style="margin:4px 0;">编辑分类名称和图标</li>
+<li style="margin:4px 0;">调整分类排序</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">4.3 管理 AR 内容</h3>
+
+<p style="margin:8px 0;line-height:1.8;">进入"AR 内容管理"页面，可以：</p>
+
+<li style="margin:4px 0;"><strong>新增内容</strong>：填写标题、简介、选择分类</li>
+<li style="margin:4px 0;"><strong>上传文件</strong>：为每个内容上传以下文件：</li>
+
+   | 文件类型 | 要求 | 必需 |
+   |----------|------|------|
+   | 标记图片 | JPG/PNG，纹理丰富，≥512×512px | AR 模式必需 |
+   | 3D 模型 | GLB/GLTF 格式（用 Blender 导出） | 是 |
+   | 缩略图 | JPG/PNG，列表展示用 | 推荐 |
+   | 语音导览 | MP3 格式 | 可选 |
+   | 详细介绍 | 自动生成或手动编辑 HTML | 推荐 |
+
+<li style="margin:4px 0;"><strong>编译标记图</strong>：上传标记图片后，点击"编译"按钮自动生成 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">.mind</code> 特征文件</li>
+<li style="margin:4px 0;"><strong>生成二维码</strong>：点击"生成二维码"，下载 PNG 图片用于打印张贴</li>
+<li style="margin:4px 0;"><strong>发布/下架</strong>：控制内容是否在首页显示</li>
+
+<h3 style="margin:20px 0 10px;color:#333;">4.4 查看和导出二维码</h3>
+
+<p style="margin:8px 0;line-height:1.8;">进入"二维码管理"页面，可以：</p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">查看所有已生成二维码的内容</li>
+<li style="margin:4px 0;">下载单个二维码</li>
+<li style="margin:4px 0;">批量生成未生成二维码的内容</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">5. 制作 AR 内容</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">5.1 准备 3D 模型</h3>
+
+<p style="margin:8px 0;line-height:1.8;">推荐使用 <strong>Blender</strong>（免费开源）制作 3D 模型：</p>
+
+<li style="margin:4px 0;">下载 Blender：https://www.blender.org</li>
+<li style="margin:4px 0;">建模或导入现有模型</li>
+<li style="margin:4px 0;">导出为 <strong>GLB 格式</strong>（文件 → 导出 → glTF 2.0）</li>
+<li style="margin:4px 0;">文件大小建议 &lt; 20MB，过大的模型可以在管理后台上传时自动压缩</li>
+
+<h3 style="margin:20px 0 10px;color:#333;">5.2 准备标记图片</h3>
+
+<p style="margin:8px 0;line-height:1.8;">标记图片是 AR 识别的基础，<strong>图片质量直接影响识别效果</strong>。</p>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>推荐标准：</strong></p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">✅ 纹理丰富、细节清晰（如海报、包装盒图案）</li>
+<li style="margin:4px 0;">✅ 正方形或接近正方形</li>
+<li style="margin:4px 0;">✅ 分辨率 ≥ 512×512 像素</li>
+<li style="margin:4px 0;">❌ 避免大面积纯色</li>
+<li style="margin:4px 0;">❌ 避免对称图案（如圆形、正方形边框）</li>
+<li style="margin:4px 0;">❌ 避免文字为主的图片</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<p style="margin:8px 0;line-height:1.8;"><strong>编译标记图：</strong></p>
+
+<p style="margin:8px 0;line-height:1.8;">上传标记图后，在管理后台点击"编译"按钮即可自动生成 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">.mind</code> 特征文件。</p>
+
+<p style="margin:8px 0;line-height:1.8;">也可以手动编译：</p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">在线工具：https://hiukim.github.io/mind-ar-js-doc/tools/compile</li>
+<li style="margin:4px 0;">命令行：<code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">npx @mindar/image-target-compiler -i input.png -o output.mind</code></li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">5.3 实物落地流程</h3>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>1. 制作3D模型（Blender → .glb）
+       ↓
+<li style="margin:4px 0;">制作/选择标记图片（如农产品包装、景点海报）</li>
+       ↓
+<li style="margin:4px 0;">在管理后台上传模型 + 标记图 → 编译</li>
+       ↓
+<li style="margin:4px 0;">生成二维码 → 下载打印</li>
+       ↓
+<li style="margin:4px 0;">将二维码和标记图张贴到实物/景点旁</li>
+       ↓
+<li style="margin:4px 0;">用户扫码 → 对准标记图 → AR 呈现！</code></pre></li>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">6. 部署到云服务器</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">6.1 方案一：Docker 部署（推荐）</h3>
+
+<p style="margin:8px 0;line-height:1.8;">项目已包含 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">Dockerfile</code>，可直接在任何支持 Docker 的服务器上运行。</p>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>步骤：</strong></p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 1. 将项目上传到服务器（或从 Git 拉取）
+<p style="margin:8px 0;line-height:1.8;">scp -r tangkou-ar/ user@你的服务器IP:/home/user/</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">2. SSH 登录服务器</h1>
+<p style="margin:8px 0;line-height:1.8;">ssh user@你的服务器IP</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">3. 进入项目目录</h1>
+<p style="margin:8px 0;line-height:1.8;">cd /home/user/tangkou-ar</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">4. 复制并编辑环境变量</h1>
+<p style="margin:8px 0;line-height:1.8;">cp .env.example .env</p>
+<p style="margin:8px 0;line-height:1.8;">nano .env   # 修改 JWT_SECRET、ADMIN_PASSWORD、BASE_URL</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">5. 构建 Docker 镜像</h1>
+<p style="margin:8px 0;line-height:1.8;">docker build -t tangkou-ar .</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">6. 启动容器（后台运行，开机自启）</h1>
+<p style="margin:8px 0;line-height:1.8;">docker run -d \</p>
+  --name tangkou-ar \
+  --restart always \
+  -p 3000:3000 \
+  -v $(pwd)/data:/app/data \
+  --env-file .env \
+  tangkou-ar</code></pre>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>常用 Docker 命令：</strong></p>
+
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr style="background:#2D6A4F;color:white;"><th style="padding:8px 12px;text-align:left;">命令</th><th style="padding:8px 12px;text-align:left;">作用</th></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">docker ps</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">查看运行中的容器</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">docker logs tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">查看日志</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">docker restart tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">重启服务</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">docker stop tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">停止服务</td></tr></table>
+<h3 style="margin:20px 0 10px;color:#333;">6.2 方案二：直接运行（需安装 Node.js）</h3>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 1. 服务器上安装 Node.js（同 2.1 节）
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">2. 安装 PM2 进程管理器（保持后台运行）</h1>
+<p style="margin:8px 0;line-height:1.8;">npm install -g pm2</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">3. 启动项目</h1>
+<p style="margin:8px 0;line-height:1.8;">npm install</p>
+<p style="margin:8px 0;line-height:1.8;">npm run seed</p>
+<p style="margin:8px 0;line-height:1.8;">pm2 start server/index.js --name tangkou-ar</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">4. 设置开机自启</h1>
+<p style="margin:8px 0;line-height:1.8;">pm2 save</p>
+<p style="margin:8px 0;line-height:1.8;">pm2 startup</code></pre></p>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>常用 PM2 命令：</strong></p>
+
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr style="background:#2D6A4F;color:white;"><th style="padding:8px 12px;text-align:left;">命令</th><th style="padding:8px 12px;text-align:left;">作用</th></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">pm2 list</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">查看所有进程</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">pm2 logs tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">查看日志</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">pm2 restart tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">重启</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;"><code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">pm2 stop tangkou-ar</code></td><td style="padding:8px 12px;border-bottom:1px solid #eee;">停止</td></tr></table>
+<h3 style="margin:20px 0 10px;color:#333;">6.3 方案三：Render.com 一键部署（免费额度）</h3>
+
+<p style="margin:8px 0;line-height:1.8;">项目已有 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">render.yaml</code> 配置：</p>
+
+<li style="margin:4px 0;">在 GitHub 上创建仓库，推送代码</li>
+<li style="margin:4px 0;">在 <a href="https://render.com" style="color:#2D6A4F;">render.com</a> 注册账号</li>
+<li style="margin:4px 0;">连接 GitHub 仓库</li>
+<li style="margin:4px 0;">Render 自动识别 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">render.yaml</code>，点击部署即可</li>
+<li style="margin:4px 0;">免费额度：每月 750 小时运行时间</li>
+
+<h3 style="margin:20px 0 10px;color:#333;">6.4 配置域名（可选）</h3>
+
+<p style="margin:8px 0;line-height:1.8;">如果购买了域名（如 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">www.tangkou-ar.cn</code>）：</p>
+
+<li style="margin:4px 0;">在域名服务商处添加 A 记录，指向服务器 IP</li>
+<li style="margin:4px 0;">安装 nginx 反向代理：</li>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>server {
+    listen 80;
+    server_name www.tangkou-ar.cn;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+<p style="margin:8px 0;line-height:1.8;">}</code></pre></p>
+
+<li style="margin:4px 0;">修改 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">.env</code> 中 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">BASE_URL=https://你的域名</code></li>
+<li style="margin:4px 0;">重启服务</li>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">7. 日常维护</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">7.1 修改管理员密码</h3>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>方式一：命令行（推荐）</strong></p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>node scripts/change-password.js 新密码</code></pre>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>方式二：登录管理后台</strong></p>
+
+<p style="margin:8px 0;line-height:1.8;">进入后台 → 修改密码</p>
+
+<h3 style="margin:20px 0 10px;color:#333;">7.2 备份数据</h3>
+
+<p style="margin:8px 0;line-height:1.8;"><strong>只需备份两个位置：</strong></p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 数据库文件
+<p style="margin:8px 0;line-height:1.8;">cp data/database.sqlite data/backups/database_$(date +%Y%m%d).sqlite</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">上传文件目录</h1>
+<p style="margin:8px 0;line-height:1.8;">cp -r data/uploads/ data/backups/uploads_$(date +%Y%m%d)/</code></pre></p>
+
+<p style="margin:8px 0;line-height:1.8;">&gt; 💡 建议设置定时任务，每天自动备份一次。</p>
+
+<h3 style="margin:20px 0 10px;color:#333;">7.3 更新内容</h3>
+
+<p style="margin:8px 0;line-height:1.8;">日常内容更新都在管理后台操作，无需修改代码：</p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">新增农产品/景点 → AR 内容管理 → 新增</li>
+<li style="margin:4px 0;">修改介绍文字 → AR 内容管理 → 编辑</li>
+<li style="margin:4px 0;">更换 3D 模型 → AR 内容管理 → 编辑 → 重新上传模型</li>
+<li style="margin:4px 0;">下架旧内容 → AR 内容管理 → 取消发布</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">7.4 模型文件压缩</h3>
+
+<p style="margin:8px 0;line-height:1.8;">如果上传的 3D 模型太大，影响手机加载速度：</p>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 压缩所有已有模型
+<p style="margin:8px 0;line-height:1.8;">node scripts/compress-models.js</code></pre></p>
+
+<p style="margin:8px 0;line-height:1.8;">或者在管理后台编辑内容时，系统会自动压缩超过 2MB 的模型。</p>
+
+<h3 style="margin:20px 0 10px;color:#333;">7.5 查看统计数据</h3>
+
+<p style="margin:8px 0;line-height:1.8;">管理后台首页仪表盘可看到：</p>
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">AR 内容总数</li>
+<li style="margin:4px 0;">各分类数量</li>
+<li style="margin:4px 0;">每个内容的浏览次数</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">8. 常见问题</h2>
+
+<h3 style="margin:20px 0 10px;color:#333;">Q: 手机扫描二维码后打不开？</h3>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">确保手机和服务器在同一网络（局域网部署时）</li>
+<li style="margin:4px 0;">检查服务器防火墙是否开放了 3000 端口</li>
+<li style="margin:4px 0;">云服务器需在安全组中放行 3000 端口</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">Q: AR 识别不出来？</h3>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">标记图片纹理不够丰富 → 更换更复杂的图片</li>
+<li style="margin:4px 0;">光线太暗或反光 → 调整环境光线</li>
+<li style="margin:4px 0;">摄像头距离不合适 → 保持 20-50cm 距离</li>
+<li style="margin:4px 0;">标记图打印后变形 → 确保平整张贴</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">Q: 3D 模型不显示？</h3>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">检查模型格式是否为 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">.glb</code> 或 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">.gltf</code></li>
+<li style="margin:4px 0;">模型文件是否上传成功（在 data/uploads/models/ 目录确认）</li>
+<li style="margin:4px 0;">手机性能太低 → 尝试压缩模型文件</li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">Q: 服务器重启后数据丢失？</h3>
+
+<ul style="margin:8px 0;padding-left:24px;"><li style="margin:4px 0;">如果使用 Docker，确保挂载了 data 目录（<code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">-v $(pwd)/data:/app/data</code>）</li>
+<li style="margin:4px 0;">定期备份 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">data/database.sqlite</code> 和 <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:13px;">data/uploads/</code></li>
+<p style="margin:8px 0;line-height:1.8;"></ul></p>
+<h3 style="margin:20px 0 10px;color:#333;">Q: 如何更新项目代码？</h3>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code># 如果使用 Git
+<p style="margin:8px 0;line-height:1.8;">git pull</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">重新安装依赖（如有新增）</h1>
+<p style="margin:8px 0;line-height:1.8;">npm install</p>
+
+<h1 style="margin:28px 0 16px;color:#1B4332;font-size:24px;">重启服务</h1>
+<p style="margin:8px 0;line-height:1.8;">docker restart tangkou-ar    # Docker 方式</p>
+<p style="margin:8px 0;line-height:1.8;">pm2 restart tangkou-ar       # PM2 方式</code></pre></p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">📞 技术参考</h2>
+
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr style="background:#2D6A4F;color:white;"><th style="padding:8px 12px;text-align:left;">技术</th><th style="padding:8px 12px;text-align:left;">官方文档</th></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">Node.js</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://nodejs.org/docs</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">mindAR</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://hiukim.github.io/mind-ar-js-doc/</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">Three.js</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://threejs.org/docs</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">Express</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://expressjs.com</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">Docker</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://docs.docker.com</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">PM2</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">https://pm2.keymetrics.io/docs</td></tr></table>
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<h2 style="margin:24px 0 12px;color:#1B4332;border-bottom:2px solid #D4A373;padding-bottom:6px;">📁 项目文件结构</h2>
+
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px;line-height:1.5;overflow-x:auto;"><code>tangkou-ar/
+<p style="margin:8px 0;line-height:1.8;">├── public/              # 用户端前端页面</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── index.html           # 首页</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── ar-viewer.html       # AR 扫描页</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── css/                 # 样式文件</p>
+<p style="margin:8px 0;line-height:1.8;">│   └── js/                  # 前端脚本</p>
+<p style="margin:8px 0;line-height:1.8;">├── admin/               # 管理后台前端</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── index.html</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── css/</p>
+<p style="margin:8px 0;line-height:1.8;">│   └── js/pages/            # 各页面模块</p>
+<p style="margin:8px 0;line-height:1.8;">├── server/              # 后端服务</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── index.js             # 服务入口</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── config.js            # 配置文件</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── routes/              # API 路由</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── middleware/           # 中间件（认证等）</p>
+<p style="margin:8px 0;line-height:1.8;">│   └── utils/               # 工具函数</p>
+<p style="margin:8px 0;line-height:1.8;">├── scripts/             # 命令行工具</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── change-password.js   # 修改密码</p>
+<p style="margin:8px 0;line-height:1.8;">│   └── compress-models.js   # 压缩模型</p>
+<p style="margin:8px 0;line-height:1.8;">├── data/                # 数据存储（重要！需备份）</p>
+<p style="margin:8px 0;line-height:1.8;">│   ├── database.sqlite      # 数据库文件</p>
+<p style="margin:8px 0;line-height:1.8;">│   └── uploads/             # 上传的文件</p>
+<p style="margin:8px 0;line-height:1.8;">│       ├── targets/         # AR 标记图片</p>
+<p style="margin:8px 0;line-height:1.8;">│       ├── models/          # 3D 模型</p>
+<p style="margin:8px 0;line-height:1.8;">│       ├── audio/           # 语音导览</p>
+<p style="margin:8px 0;line-height:1.8;">│       ├── thumbnails/      # 缩略图</p>
+<p style="margin:8px 0;line-height:1.8;">│       └── qrcodes/         # 生成的二维码</p>
+<p style="margin:8px 0;line-height:1.8;">├── docs/                # 文档</p>
+<p style="margin:8px 0;line-height:1.8;">├── .env.example         # 环境变量模板</p>
+<p style="margin:8px 0;line-height:1.8;">├── Dockerfile           # Docker 部署配置</p>
+<p style="margin:8px 0;line-height:1.8;">├── render.yaml          # Render.com 部署配置</p>
+<p style="margin:8px 0;line-height:1.8;">├── start-public.js      # 公网隧道启动脚本</p>
+<p style="margin:8px 0;line-height:1.8;">└── package.json         # 项目依赖配置</code></pre></p>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+<p style="margin:8px 0;line-height:1.8;">&gt; 📅 最后更新：2024年7月</p>
+<p style="margin:8px 0;line-height:1.8;">&gt; 📧 如有技术问题，可联系原开发团队获取支持。</p>
+
+</body>
+</html>
