@@ -4,10 +4,13 @@ data/uploads/targets/*
 data/uploads/models/*
 data/uploads/audio/*
 data/uploads/qrcodes/*
+data/uploads/thumbnails/*
 !data/uploads/targets/.gitkeep
 !data/uploads/models/.gitkeep
 !data/uploads/audio/.gitkeep
 !data/uploads/qrcodes/.gitkeep
+!data/uploads/thumbnails/.gitkeep
 .env
 .DS_Store
 *.log
+cloudflared.exe
