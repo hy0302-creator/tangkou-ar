@@ -58,6 +58,11 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: '标题和标识不能为空' });
   }
 
+  // Validate slug format: only allow URL-safe characters
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+    return res.status(400).json({ error: '标识(slug)只能包含字母、数字、下划线和连字符' });
+  }
+
   await database.getDb();
 
   const existing = database.get('SELECT id FROM ar_contents WHERE slug = ?', [slug]);
@@ -96,6 +101,10 @@ router.put('/:id', async (req, res) => {
 
   for (const f of fields) {
     if (req.body[f] !== undefined) {
+      // Validate slug format if it's being updated
+      if (f === 'slug' && !/^[a-zA-Z0-9_-]+$/.test(req.body[f])) {
+        return res.status(400).json({ error: '标识(slug)只能包含字母、数字、下划线和连字符' });
+      }
       // category_id: empty string → NULL
       if (f === 'category_id' && req.body[f] === '') {
         sets.push('category_id = NULL');
@@ -123,11 +132,18 @@ router.delete('/:id', async (req, res) => {
   const content = database.get('SELECT * FROM ar_contents WHERE id = ?', [req.params.id]);
   if (!content) return res.status(404).json({ error: '内容不存在' });
 
-  // Delete associated files
+  // Delete associated files (with path traversal protection)
   const fileFields = ['target_image_path', 'target_mind_path', 'model_3d_path', 'audio_path', 'thumbnail_path', 'qr_code_path'];
   for (const f of fileFields) {
     if (content[f]) {
-      const filePath = path.join(config.ROOT_DIR, content[f].replace(/^\//, ''));
+      // Normalize and resolve the path to prevent directory traversal
+      const cleanPath = path.normalize(content[f]).replace(/^(\.\.[/\\])+/, '');
+      const filePath = path.resolve(config.UPLOADS_DIR, cleanPath.replace(/^\/?(data\/uploads\/)?/, ''));
+      // Verify the resolved path is within the uploads directory
+      if (!filePath.startsWith(path.resolve(config.UPLOADS_DIR))) {
+        console.warn('[Security] Blocked path traversal attempt:', content[f]);
+        continue;
+      }
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
       }
@@ -149,7 +165,8 @@ router.post('/:id/qrcode', async (req, res) => {
     database.run('UPDATE ar_contents SET qr_code_path = ? WHERE id = ?', [qr.path, req.params.id]);
     res.json({ qr_code_path: qr.path, qr_url: qr.url, qr_dataurl: qr.dataUrl });
   } catch (err) {
-    res.status(500).json({ error: '二维码生成失败: ' + err.message });
+    console.error('[QR] Generation error:', err.message);
+    res.status(500).json({ error: '二维码生成失败，请稍后重试' });
   }
 });
 
@@ -163,7 +180,12 @@ router.post('/:id/compile', async (req, res) => {
     return res.status(400).json({ error: '请先上传标记图片' });
   }
 
-  const imageAbsPath = path.join(config.ROOT_DIR, content.target_image_path.replace(/^\//, ''));
+  const imageAbsPath = path.resolve(config.UPLOADS_DIR, content.target_image_path.replace(/^\/?(data\/uploads\/)?/, ''));
+  // Prevent path traversal
+  if (!imageAbsPath.startsWith(path.resolve(config.UPLOADS_DIR))) {
+    console.warn('[Security] Blocked path traversal in compile:', content.target_image_path);
+    return res.status(400).json({ error: '标记图片路径无效' });
+  }
   if (!fs.existsSync(imageAbsPath)) {
     return res.status(400).json({ error: '标记图片文件不存在，请重新上传' });
   }

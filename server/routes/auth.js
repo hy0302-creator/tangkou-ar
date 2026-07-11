@@ -75,8 +75,8 @@ router.post('/change-password', async (req, res) => {
   if (!oldPassword || !newPassword) {
     return res.status(400).json({ error: '请输入旧密码和新密码' });
   }
-  if (newPassword.length < 4) {
-    return res.status(400).json({ error: '新密码至少4个字符' });
+  if (newPassword.length < 8) {
+    return res.status(400).json({ error: '新密码至少8个字符，建议包含字母和数字' });
   }
 
   await database.getDb();

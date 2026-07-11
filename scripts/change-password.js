@@ -7,9 +7,9 @@ const { getDb, run, closeDb } = require('../server/utils/database');
 
 const newPassword = process.argv[2];
 
-if (!newPassword || newPassword.length < 4) {
+if (!newPassword || newPassword.length < 8) {
   console.log('用法: node scripts/change-password.js 你的新密码');
-  console.log('密码至少4个字符');
+  console.log('密码至少8个字符，建议包含字母和数字');
   process.exit(1);
 }
 

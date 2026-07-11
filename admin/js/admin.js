@@ -49,7 +49,7 @@ const App = {
         </div>
         <div class="form-group">
           <label>新密码</label>
-          <input type="password" id="fNewPwd" placeholder="至少4个字符">
+          <input type="password" id="fNewPwd" placeholder="至少8个字符，建议包含字母和数字">
         </div>
         <div class="form-group">
           <label>确认新密码</label>
@@ -72,8 +72,8 @@ const App = {
         if (newPwd !== newPwd2) {
           return Utils.showToast('两次输入的新密码不一致', 'error');
         }
-        if (newPwd.length < 4) {
-          return Utils.showToast('新密码至少4个字符', 'error');
+        if (newPwd.length < 8) {
+          return Utils.showToast('新密码至少8个字符', 'error');
         }
 
         try {

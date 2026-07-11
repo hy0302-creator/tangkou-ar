@@ -144,7 +144,7 @@ router.post('/model', upload.single('model_3d'), async (req, res, next) => {
     const result = database.run('UPDATE ar_contents SET model_3d_path = ? WHERE id = ?', [relativePath, contentId]);
     if (!result.success) {
       console.error('[Upload Model] DB error:', result.error);
-      return res.status(500).json({ error: '数据库写入失败: ' + result.error });
+      return res.status(500).json({ error: '保存失败，请稍后重试' });
     }
 
     res.json({
@@ -155,7 +155,7 @@ router.post('/model', upload.single('model_3d'), async (req, res, next) => {
   } catch (err) {
     console.error('[Upload Model] Unexpected error:', err.message);
     console.error('[Upload Model] Stack:', err.stack);
-    return res.status(500).json({ error: '上传失败: ' + err.message });
+    return res.status(500).json({ error: '上传失败，请稍后重试' });
   }
 });
 

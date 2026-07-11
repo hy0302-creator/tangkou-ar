@@ -118,7 +118,7 @@ app.post('/api/admin/contents/generate-info', async (req, res) => {
     res.json({ info_html: infoHtml.trim() });
   } catch (err) {
     console.error('Generate info error:', err);
-    res.status(500).json({ error: '生成失败: ' + err.message });
+    res.status(500).json({ error: '生成失败，请稍后重试' });
   }
 });
 

@@ -24,6 +24,11 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: '名称和标识不能为空' });
   }
 
+  // Validate slug format
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+    return res.status(400).json({ error: '标识(slug)只能包含字母、数字、下划线和连字符' });
+  }
+
   await database.getDb();
   const result = database.run(
     'INSERT INTO categories (name, slug, icon, description, sort_order) VALUES (?, ?, ?, ?, ?)',
@@ -45,6 +50,11 @@ router.put('/:id', async (req, res) => {
 
   const cat = database.get('SELECT * FROM categories WHERE id = ?', [req.params.id]);
   if (!cat) return res.status(404).json({ error: '分类不存在' });
+
+  // Validate slug format if it's being updated
+  if (slug && !/^[a-zA-Z0-9_-]+$/.test(slug)) {
+    return res.status(400).json({ error: '标识(slug)只能包含字母、数字、下划线和连字符' });
+  }
 
   database.run(
     `UPDATE categories SET name=?, slug=?, icon=?, description=?, sort_order=? WHERE id=?`,
